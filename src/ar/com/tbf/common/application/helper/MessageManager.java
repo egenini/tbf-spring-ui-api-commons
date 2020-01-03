@@ -16,26 +16,30 @@ public class MessageManager implements IMessageManager {
 	 * @see ar.com.tbf.common.application.IMessageManager#cleanAll()
 	 */
 	@Override
-	public void cleanAll() {
+	public IMessageManager cleanAll() {
 		this.messages.clear();
 		this.fieldErrors.clear();
 		this.genericErrors.clear();
+		
+		return this;
 	}
 	
 	/* (non-Javadoc)
 	 * @see ar.com.tbf.common.application.IMessageManager#addMessage(java.lang.String)
 	 */
 	@Override
-	public void addMessage( String message ){
+	public IMessageManager addMessage( String message ){
 		this.messages.add(message);
+		return this;
 	}
 
 	/* (non-Javadoc)
 	 * @see ar.com.tbf.common.application.IMessageManager#addMessage(java.lang.String, java.lang.Object)
 	 */
 	@Override
-	public void addMessage( String message, Object...params ){
+	public IMessageManager addMessage( String message, Object...params ){
 		this.messages.add( new MessageFormat( message ).format(params) );
+		return this;
 	}
 	
 	/* (non-Javadoc)
@@ -66,26 +70,28 @@ public class MessageManager implements IMessageManager {
 	 * @see ar.com.tbf.common.application.IMessageManager#addFieldError(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void addFieldError( String field, String message ){
+	public IMessageManager addFieldError( String field, String message ){
 		
 		if( ! fieldErrors.containsKey(field) ){
 			fieldErrors.put(field, new ArrayList<String>());
 		}
 		
 		fieldErrors.get( field ).add(message);
+		return this;
 	}
 
 	/* (non-Javadoc)
 	 * @see ar.com.tbf.common.application.IMessageManager#addFieldError(java.lang.String, java.lang.String, java.lang.Object)
 	 */
 	@Override
-	public void addFieldError( String field, String message, Object...params ){
+	public IMessageManager addFieldError( String field, String message, Object...params ){
 		
 		if( ! fieldErrors.containsKey(field) ){
 			fieldErrors.put(field, new ArrayList<String>());
 		}
 		
 		fieldErrors.get( field ).add( new MessageFormat(message).format(params));
+		return this;
 	}
 	
 	/* (non-Javadoc)
@@ -117,8 +123,9 @@ public class MessageManager implements IMessageManager {
 	 * @see ar.com.tbf.common.application.IMessageManager#setFieldErrors(java.util.Map)
 	 */
 	@Override
-	public void setFieldErrors(Map<String, List<String>> fieldErrors) {
+	public IMessageManager setFieldErrors(Map<String, List<String>> fieldErrors) {
 		this.fieldErrors = fieldErrors;
+		return this;
 	}
 
 	/* (non-Javadoc)
@@ -133,17 +140,19 @@ public class MessageManager implements IMessageManager {
 	 * @see ar.com.tbf.common.application.IMessageManager#addGenericError(java.lang.String)
 	 */
 	@Override
-	public void addGenericError( String message ){
+	public IMessageManager addGenericError( String message ){
 		this.genericErrors.add(message );
+		return this;
 	}
 	
 	/* (non-Javadoc)
 	 * @see ar.com.tbf.common.application.IMessageManager#addGenericError(java.lang.String, java.lang.Object)
 	 */
 	@Override
-	public void addGenericError( String message, Object...params ){
+	public IMessageManager addGenericError( String message, Object...params ){
 		
 		this.genericErrors.add( new MessageFormat(message).format(params) );
+		return this;
 	}
 	
 	/* (non-Javadoc)
@@ -185,22 +194,24 @@ public class MessageManager implements IMessageManager {
 		}
 	}
 
-	public void addAllFieldErrors(Map<String, List<String>> fieldErrors) {
+	public IMessageManager addAllFieldErrors(Map<String, List<String>> fieldErrors) {
 		
 		for( String key : fieldErrors.keySet() ) {
 			this.fieldErrors.put(key, fieldErrors.get(key));
 		}
+		return this;
 	}
 
-	public void addAllGenericErrors( List<String> genericErrors ) {
+	public IMessageManager addAllGenericErrors( List<String> genericErrors ) {
 
 		this.genericErrors.addAll(genericErrors);
-		
+		return this;
 	}
 
-	public void addAllMessages(List<String> messages) {
+	public IMessageManager addAllMessages(List<String> messages) {
 
 		this.messages.addAll(messages);
+		return this;
 	}
 
 	public static void main(String[] args) {

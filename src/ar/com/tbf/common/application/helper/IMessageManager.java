@@ -5,11 +5,11 @@ import java.util.Map;
 
 public interface IMessageManager {
 
-	void cleanAll();
+	IMessageManager cleanAll();
 
-	void addMessage(String message);
+	IMessageManager addMessage(String message);
 
-	void addMessage(String message, Object... params);
+	IMessageManager addMessage(String message, Object... params);
 
 	boolean hasMessages();
 
@@ -17,9 +17,9 @@ public interface IMessageManager {
 
 	boolean hasFieldErrors();
 
-	void addFieldError(String field, String message);
+	IMessageManager addFieldError(String field, String message);
 
-	void addFieldError(String field, String message, Object... params);
+	IMessageManager addFieldError(String field, String message, Object... params);
 
 	boolean hasFieldError(String field);
 
@@ -27,18 +27,18 @@ public interface IMessageManager {
 
 	Map<String, List<String>> getFieldErrors();
 
-	void setFieldErrors(Map<String, List<String>> fieldErrors);
+	IMessageManager setFieldErrors(Map<String, List<String>> fieldErrors);
 
 	boolean hasGenericErrors();
 
-	void addGenericError(String message);
+	IMessageManager addGenericError(String message);
 
 	/**
 	 * Recibe una plantilla de mensaje e inserta los valores recibidos en los n parametros siguientes.
 	 * @param message: una cadena con al menos 1 {0}
 	 * @param params: valor/es para cada {0}
 	 */
-	void addGenericError(String message, Object... params);
+	IMessageManager addGenericError(String message, Object... params);
 
 	List<String> getGenericErrors();
 
@@ -46,10 +46,10 @@ public interface IMessageManager {
 
 	boolean hasErrors();
 
-	void addAllFieldErrors(Map<String, List<String>> fieldErrors);
+	IMessageManager addAllFieldErrors(Map<String, List<String>> fieldErrors);
 	
-	void addAllGenericErrors( List<String> genericErrors );
+	IMessageManager addAllGenericErrors( List<String> genericErrors );
 	
-	void addAllMessages(List<String> messages);
+	IMessageManager addAllMessages(List<String> messages);
 	
 }
