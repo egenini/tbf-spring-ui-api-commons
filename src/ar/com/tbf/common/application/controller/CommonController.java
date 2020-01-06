@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.tbf.common.application.helper.IMessageManager;
 import ar.com.tbf.common.application.helper.ITextProvider;
@@ -16,7 +17,9 @@ public abstract class CommonController implements ITextProvider{
 
 	@Autowired
 	MessageSource messageSource;
-	
+
+	protected ModelAndView modelAndView;
+
 	protected IMessageManager messageManager = new MessageManager();
 		
 	public CommonController() {
@@ -25,9 +28,20 @@ public abstract class CommonController implements ITextProvider{
 	
 	protected void init() {
 		
-		messageManager.cleanAll();
+		this.messageManager.cleanAll();
+		
+		modelAndView = new ModelAndView();
+		
+		modelAndView.getModel().put("messageManager", this.messageManager);
 	}
 	
+	protected abstract String getNamespace();
+	
+	protected void addView( String resourceName, String viewName ) {
+		
+		modelAndView.setViewName( getNamespace() +"/"+ resourceName +"/"+ viewName);
+	}
+
 	public String toBase64(byte[] byteArray){
 		
 		return byteArray != null ? Base64.encodeToString(byteArray) : "";
@@ -59,7 +73,7 @@ public abstract class CommonController implements ITextProvider{
 	}
 	
 	@Override
-	public String getText(String key) {
+	public String toText(String key) {
 		
 		String msg = key;
 		
@@ -72,7 +86,7 @@ public abstract class CommonController implements ITextProvider{
 	}
 
 	@Override
-	public String getText(String key, Object... values) {
+	public String toText(String key, Object... values) {
 		return messageSource.getMessage(key, values, LocaleContextHolder.getLocale());
 	}
 }
