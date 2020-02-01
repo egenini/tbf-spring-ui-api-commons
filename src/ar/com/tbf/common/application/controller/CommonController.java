@@ -11,6 +11,7 @@ import ar.com.tbf.common.application.helper.ITextProvider;
 import ar.com.tbf.common.application.helper.MessageManager;
 import ar.com.tbf.common.share.CommonDataAccesibility;
 import ar.com.tbf.gson.TbfGson;
+import ar.com.tbf.web.generic.filter.RequestResponseAccessibility;
 import jodd.util.Base64;
 
 public abstract class CommonController implements ITextProvider{
@@ -32,6 +33,8 @@ public abstract class CommonController implements ITextProvider{
 		
 		modelAndView = new ModelAndView();
 		
+		modelAndView.addObject("applicationURL", RequestResponseAccessibility.getApplicationURL() );
+
 		modelAndView.getModel().put("messageManager", this.messageManager);
 	}
 	
