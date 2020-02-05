@@ -14,7 +14,7 @@ import ar.com.tbf.gson.TbfGson;
 import ar.com.tbf.web.generic.filter.RequestResponseAccessibility;
 import jodd.util.Base64;
 
-public abstract class CommonController implements ITextProvider{
+public abstract class CommonController extends CommonDataController implements ITextProvider {
 
 	@Autowired
 	MessageSource messageSource;

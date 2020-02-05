@@ -8,10 +8,15 @@ public class TbfGson {
 		
 		return new com.google.gson.GsonBuilder().setPrettyPrinting().registerTypeAdapter(Date.class, new GsonUTCDateAdapter());
 	}
-	
+
 	public com.google.gson.Gson Gson(){
 		
 		return GsonBuilder().create();
+	}
+
+	public com.google.gson.Gson Gson( boolean includeNulls ){
+		
+		return GsonBuilder().serializeNulls().create();
 	}
 
 	public com.google.gson.Gson Gson( String fieldsToAdd ){
