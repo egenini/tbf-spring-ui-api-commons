@@ -20,7 +20,12 @@ public class TbfGson {
 	}
 
 	public com.google.gson.Gson Gson( String fieldsToAdd ){
-		
+
+		return Gson(fieldsToAdd, false);
+	}
+
+	public com.google.gson.Gson Gson(String fieldsToAdd, boolean serializeNulls) {
+
 		com.google.gson.GsonBuilder builder = GsonBuilder();
 		
 		builder.serializeNulls();
@@ -35,5 +40,6 @@ public class TbfGson {
 		}
 		
 		return builder.create();
+
 	}
 }

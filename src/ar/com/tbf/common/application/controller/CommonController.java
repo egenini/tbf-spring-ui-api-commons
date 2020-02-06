@@ -54,25 +54,35 @@ public abstract class CommonController extends CommonDataController implements I
 		
 		return this.Gson().fromJson(body, classRef);
 	}
-
+	
 	public com.google.gson.Gson Gson( ){
+
+		return this.Gson(false);
+	}
+	
+	public com.google.gson.Gson Gson( boolean serializeNulls ){
 		
 		com.google.gson.Gson gson = null;
 		
 		if( CommonDataAccesibility.hasFielsFilter() ) {
 			
-			gson = this.Gson( CommonDataAccesibility.getFieldFilter() );
+			gson = this.Gson( CommonDataAccesibility.getFieldFilter(), serializeNulls );
 		}else {
 			
-			gson = new TbfGson().Gson();
+			gson = new TbfGson().Gson(serializeNulls);
 		}
 		
 		return gson;
 	}
 
 	public com.google.gson.Gson Gson( String fields ){
+
+		return this.Gson(fields, false);
+	}
+	
+	public com.google.gson.Gson Gson( String fields, boolean serializeNulls ){
 				
-		return new TbfGson().Gson(fields);
+		return new TbfGson().Gson(fields, serializeNulls);
 	}
 	
 	@Override
