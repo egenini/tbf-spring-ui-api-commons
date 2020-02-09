@@ -6,7 +6,7 @@ public class TbfGson {
 
 	public static synchronized com.google.gson.GsonBuilder GsonBuilder(){
 		
-		return new com.google.gson.GsonBuilder().setPrettyPrinting().registerTypeAdapter(Date.class, new GsonUTCDateAdapter());
+		return new com.google.gson.GsonBuilder().setPrettyPrinting().registerTypeAdapter(Date.class, new GsonUTCDateAdapter()).registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY);
 	}
 
 	public com.google.gson.Gson Gson(){
@@ -16,7 +16,7 @@ public class TbfGson {
 
 	public com.google.gson.Gson Gson( boolean includeNulls ){
 		
-		return GsonBuilder().serializeNulls().create();
+		return includeNulls ? GsonBuilder().create() : GsonBuilder().serializeNulls().create();
 	}
 
 	public com.google.gson.Gson Gson( String fieldsToAdd ){
