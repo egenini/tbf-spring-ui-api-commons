@@ -16,7 +16,7 @@ public class TbfGson {
 
 	public com.google.gson.Gson Gson( boolean includeNulls ){
 		
-		return includeNulls ? GsonBuilder().create() : GsonBuilder().serializeNulls().create();
+		return includeNulls ? GsonBuilder().serializeNulls().create() : GsonBuilder().create();
 	}
 
 	public com.google.gson.Gson Gson( String fieldsToAdd ){
