@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tbf-spring</groupId>
 	<artifactId>tbf-spring-ui-api-commons</artifactId>
-	<version>6.3.1</version>
+	<version>6.4.0</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -96,7 +96,8 @@
 		<dependency>
 			<groupId>com.github.egenini</groupId>
 			<artifactId>tbf-web-shared-info</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
+		
 	</dependencies>
 </project>
