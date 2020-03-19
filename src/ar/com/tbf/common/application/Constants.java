@@ -15,4 +15,5 @@ public class Constants {
 	public static final DateFormat DATE_ISO = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 	public static final Locale AR = new Locale("es","AR");
 	
+	public static Boolean isHttps = false;
 }
