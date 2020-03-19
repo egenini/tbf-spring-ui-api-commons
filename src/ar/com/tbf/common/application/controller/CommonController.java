@@ -6,6 +6,7 @@ import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.tbf.common.application.Constants;
 import ar.com.tbf.common.application.helper.IMessageManager;
 import ar.com.tbf.common.application.helper.ITextProvider;
 import ar.com.tbf.common.application.helper.MessageManager;
@@ -33,7 +34,8 @@ public abstract class CommonController extends CommonDataController implements I
 		
 		modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("applicationURL", RequestResponseAccessibility.getApplicationURL() );
+		// la constante se completa con el valor que toma la aplicación de su .properties
+		modelAndView.addObject("applicationURL", RequestResponseAccessibility.getApplicationURL( Constants.HttpScheme ) );
 
 		modelAndView.getModel().put("messageManager", this.messageManager);
 	}
