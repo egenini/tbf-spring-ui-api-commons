@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tbf-spring</groupId>
 	<artifactId>tbf-spring-ui-api-commons</artifactId>
-	<version>6.6.0</version>
+	<version>6.7.0</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -76,28 +76,26 @@
 		    <artifactId>hibernate-core</artifactId>
 		    <version>5.4.11.Final</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.5</version>
-		</dependency>
 		<dependency>
 			<groupId>org.jodd</groupId>
 			<artifactId>jodd-core</artifactId>
 			<version>5.0.7</version>
 		</dependency>
+
 		<dependency>
-			<groupId>com.github.egenini</groupId>
-			<artifactId>tbf-common-interfaces</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.egenini</groupId>
+			<groupId>ar.com.tbf</groupId>
 			<artifactId>tbf-web-shared-info</artifactId>
 			<version>1.2.0</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>ar.com.tbf</groupId>
+			<artifactId>tbf-common-interfaces</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ar.com.tbf</groupId>
+			<artifactId>tbf-gson-extension</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 </project>

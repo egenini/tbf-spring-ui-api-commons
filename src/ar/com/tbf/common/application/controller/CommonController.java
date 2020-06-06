@@ -11,7 +11,7 @@ import ar.com.tbf.common.application.helper.IMessageManager;
 import ar.com.tbf.common.application.helper.ITextProvider;
 import ar.com.tbf.common.application.helper.MessageManager;
 import ar.com.tbf.common.share.CommonDataAccesibility;
-import ar.com.tbf.gson.TbfGson;
+import ar.com.tbf.gson.TbfGsonWithHibernateAdapter;
 import ar.com.tbf.web.generic.filter.RequestResponseAccessibility;
 import jodd.util.Base64;
 
@@ -34,7 +34,9 @@ public abstract class CommonController extends CommonDataController implements I
 		
 		modelAndView = new ModelAndView();
 		
-		// la constante se completa con el valor que toma la aplicación de su .properties
+		// la constante se completa con el valor que toma la aplicación de su .properties, 
+		// esto es porque si la aplicación está detrás de un balanceador o un proxy es posible que 
+		System.out.println( "Constants.HttpScheme para applicationURL "+ Constants.HttpScheme );
 		modelAndView.addObject("applicationURL", RequestResponseAccessibility.getApplicationURL( Constants.HttpScheme ) );
 
 		modelAndView.getModel().put("messageManager", this.messageManager);
@@ -71,7 +73,7 @@ public abstract class CommonController extends CommonDataController implements I
 			gson = this.Gson( CommonDataAccesibility.getFieldFilter(), serializeNulls );
 		}else {
 			
-			gson = new TbfGson().Gson(serializeNulls);
+			gson = new TbfGsonWithHibernateAdapter().Gson(serializeNulls);
 		}
 		
 		return gson;
@@ -84,7 +86,7 @@ public abstract class CommonController extends CommonDataController implements I
 	
 	public com.google.gson.Gson Gson( String fields, boolean serializeNulls ){
 				
-		return new TbfGson().Gson(fields, serializeNulls);
+		return new TbfGsonWithHibernateAdapter().Gson(fields, serializeNulls);
 	}
 	
 	@Override
