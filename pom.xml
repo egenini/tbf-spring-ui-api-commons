@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tbf-spring</groupId>
 	<artifactId>tbf-spring-ui-api-commons</artifactId>
-	<version>6.7.0</version>
+	<version>7.0.0</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -96,6 +96,16 @@
 			<groupId>ar.com.tbf</groupId>
 			<artifactId>tbf-gson-extension</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ar.com.tbf</groupId>
+			<artifactId>spring-shiro-cas3</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>tbf-spring</groupId>
+			<artifactId>tbf-spring-data</artifactId>
+			<version>2.2.1</version>
 		</dependency>
 	</dependencies>
 </project>
